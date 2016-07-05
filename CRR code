@@ -1,0 +1,24 @@
+Open R studio
+Click on packages tab in bottom right window, see if tm and wordcloud are checked. If not, go to tools>install packages and install them. Then check them off in Packages tab.
+download document as txt file in a new folder in your documents folder
+
+CRR <- Corpus (DirSource('temp/'))
+inspect(CRR)
+
+CRR <- tm_map(CRR, stripWhitespace)
+
+CRR <- tm_map(CRR, removePunctuation)   
+
+CRR <- tm_map(CRR, removeNumbers) 
+
+CRR <- tm_map(CRR, content_transformer(tolower))
+
+CRR <- tm_map(CRR, removeWords, stopwords("english"))
+
+
+wordcloud(CRR, scale=c(4,0.5), max.words=100, random.order=FALSE, rot.per=0.35, use.r.layout=FALSE, colors=brewer.pal(8, 'Dark2'))
+
+******************
+
+CRR <- tm_map(CRR, stemDocument)
+wordcloud(CRR, scale=c(4,0.5), max.words=100, random.order=FALSE, rot.per=0.35, use.r.layout=FALSE, colors=brewer.pal(8, 'Dark2'))
