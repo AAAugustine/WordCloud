@@ -1,5 +1,5 @@
 Open R studio
-Click on packages tab in bottom right window, see if tm and wordcloud are checked. If not, go to tools>install packages and install them. Then check them off in Packages tab.
+Click on packages tab in bottom right window, see if tm and wordcloud are there. If not, go to tools>install packages and install them. Then check them off in Packages tab.
 download document as txt file in a new folder in your documents folder
 
 CRR <- Corpus (DirSource('temp/'))
@@ -22,3 +22,6 @@ wordcloud(CRR, scale=c(4,0.5), max.words=100, random.order=FALSE, rot.per=0.35, 
 
 CRR <- tm_map(CRR, stemDocument)
 wordcloud(CRR, scale=c(4,0.5), max.words=100, random.order=FALSE, rot.per=0.35, use.r.layout=FALSE, colors=brewer.pal(8, 'Dark2'))
+
+to remove more words:
+modi_data<-tm_map(modi_data,removeWords, c(“and”,”the”,”our”,”that”,”for”,”are”,”also”,”more”,”has”,”must”,”have”,”should”,”this”,”with”))
